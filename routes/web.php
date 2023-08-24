@@ -23,13 +23,13 @@ Route::get('/', function () {
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('/auth/login', 'index')->name('login');
-    Route::post('/auth/login', 'postLogin');
-    Route::get('/auth/logout', 'getLogout')->name('logout');
+    Route::post('/auth/login', 'authenticate');
+    Route::get('/auth/logout', 'logout')->name('logout');
 });
 
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/auth/register', 'index')->name('register');
-    Route::post('/auth/register', 'postRegister');
+    Route::post('/auth/register', 'store');
 });
 
 Route::controller(TagController::class)->group(function () {

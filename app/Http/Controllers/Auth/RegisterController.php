@@ -16,7 +16,7 @@ class RegisterController extends Controller
         return view('auth.register', $data);
     }
 
-    public function postRegister(Request $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate(
             [
@@ -52,10 +52,9 @@ class RegisterController extends Controller
                 ]
             ]
         );
-
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $isRegistered = User::create($validatedData);
 
+        $isRegistered = User::create($validatedData);
         if ($isRegistered) {
             return redirect()->route('login')->with('success', 'Registrasi berhasil, silahkan login');
         }

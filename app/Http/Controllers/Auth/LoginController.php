@@ -16,7 +16,7 @@ class LoginController extends Controller
         return view('auth.login', $data);
     }
 
-    public function postLogin(Request $request)
+    public function authenticate(Request $request)
     {
         $validatedData = $request->validate(
             [
@@ -37,15 +37,15 @@ class LoginController extends Controller
         );
 
         if (Auth::attempt($validatedData)) {
-            return redirect()->route('home')->with('success');
+            return redirect()->route('home');
         }
         return redirect()->back()->with('error', 'Email atau password salah');
     }
 
-    public function getLogout(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect()->route('home')->with('success');
+        return redirect()->route('home');
     }
 }
