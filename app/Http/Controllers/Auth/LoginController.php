@@ -11,7 +11,9 @@ class LoginController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Login'
+            'title' => 'Login',
+            'formTitle' => 'Login',
+            'formDescription' => 'Silahkan isi form berikut untuk login',
         ];
         return view('auth.login', $data);
     }

@@ -22,7 +22,32 @@
 			<div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10">
 				<div class="d-flex justify-content-between flex-column-fluid flex-column w-100 mw-450px">
 					<div class="py-20">
-						@yield('form')
+						<div class="card-body">
+							<div class="text-start mb-6">
+								<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">{{ $formTitle }}</h1>
+								<div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">{{ $formDescription }}
+								</div>
+							</div>
+							@if (session('success'))
+								<div class="alert alert-primary d-flex align-items-center p-5">
+									<i class="fa-solid fa-circle-check fs-2hx text-primary me-4"></i>
+									<div class="d-flex flex-column">
+										<h4 class="mb-1 text-primary">Berhasil!</h4>
+										<span>{{ session('success') }}</span>
+									</div>
+								</div>
+							@endif
+							@if (session('error'))
+								<div class="alert alert-danger d-flex align-items-center p-5">
+									<i class="fa-solid fa-circle-exclamation fs-2hx text-danger me-4"></i>
+									<div class="d-flex flex-column">
+										<h4 class="mb-1 text-danger">Error!</h4>
+										<span>{{ session('error') }}</span>
+									</div>
+								</div>
+							@endif
+							@yield('form')
+						</div>
 					</div>
 				</div>
 			</div>

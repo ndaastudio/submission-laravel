@@ -11,7 +11,9 @@ class RegisterController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Register'
+            'title' => 'Register',
+            'formTitle' => 'Register',
+            'formDescription' => 'Silahkan isi form berikut untuk mendaftar',
         ];
         return view('auth.register', $data);
     }
