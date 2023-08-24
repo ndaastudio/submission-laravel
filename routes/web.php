@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Dashboard\ArtikelController;
+use App\Http\Controllers\Dashboard\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->name('home');
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/auth/login', 'index')->name('login');
+    Route::post('/auth/login', 'postLogin');
+    Route::get('/auth/logout', 'getLogout')->name('logout');
+});
+
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/auth/register', 'index')->name('register');
+    Route::post('/auth/register', 'postRegister');
 });
