@@ -4,7 +4,7 @@
 	<title>Dashboard</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="{{ asset('media/logos/ndaastudio.png') }}">
+	<link rel="shortcut icon" href="{{ asset('media/logos/ndaastudio_github.png') }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700">
 	<link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
 					<div class="container-xxl d-flex flex-grow-1 flex-stack">
 						<div class="d-flex align-items-center me-5">
 							<a href="#">
-								<img alt="Logo" src="{{ asset('media/logos/ndaastudio.png') }}" class="h-20px h-lg-30px">
+								<img alt="Logo" src="{{ asset('media/logos/ndaastudio_github.png') }}" class="h-20px h-lg-30px">
 							</a>
 						</div>
 						<div class="d-flex align-items-center flex-shrink-0">
