@@ -31,3 +31,10 @@ Route::controller(RegisterController::class)->group(function () {
     Route::get('/auth/register', 'index')->name('register');
     Route::post('/auth/register', 'postRegister');
 });
+
+Route::controller(TagController::class)->group(function () {
+    Route::get('/dashboard/tag', 'index')->name('tag');
+    Route::post('/dashboard/tag', 'store');
+    Route::delete('/dashboard/tag/{id}', 'destroy')->name('tag.id');
+    Route::put('/dashboard/tag/{id}', 'update');
+});
