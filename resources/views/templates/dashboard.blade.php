@@ -18,7 +18,7 @@
 					data-kt-sticky-offset="{default: '200px', lg: '300px'}" style="animation-duration: 0.3s;">
 					<div class="container-xxl d-flex flex-grow-1 flex-stack">
 						<div class="d-flex align-items-center me-5">
-							<a href="#">
+							<a href="{{ route('home') }}">
 								<img alt="Logo" src="{{ asset('media/logos/ndaastudio_github.png') }}" class="h-20px h-lg-30px">
 							</a>
 						</div>
@@ -45,11 +45,11 @@
 									<div class="menu-item px-3">
 										<div class="menu-content d-flex align-items-center px-3">
 											<div class="symbol symbol-50px me-5">
-												<img alt="Logo" src="{{ asset('media/avatars/300-1.jpg') }}">
+												<img alt="Logo" src="{{ asset('media/avatars/blank.png') }}">
 											</div>
 											<div class="d-flex flex-column">
 												<div class="fw-bold d-flex align-items-center fs-5">{{ Auth::user()->nama }}<span
-														class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->role == 1 ? 'Penulis' : (Auth::user()->role == 2 ? 'Admin' : '') }}</span>
+														class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->role == 1 ? 'Penulis' : (Auth::user()->role == 2 ? 'Admin' : (Auth::user()->role == 0 ? 'Pembaca' : '')) }}</span>
 												</div>
 												<a class="fw-semibold text-muted fs-7">{{ Auth::user()->email }}</a>
 											</div>
@@ -57,11 +57,16 @@
 									</div>
 									<div class="separator my-2"></div>
 									<div class="menu-item px-5">
-										<a href="{{ route('artikel') }}" class="menu-link px-5">Artikel</a>
+										<a href="{{ route('article') }}" class="menu-link px-5">Artikel</a>
 									</div>
-									<div class="menu-item px-5">
-										<a href="{{ route('tag') }}" class="menu-link px-5">Tag</a>
-									</div>
+									@if (Auth::user()->role === 2)
+										<div class="menu-item px-5">
+											<a href="{{ route('tag') }}" class="menu-link px-5">Tag</a>
+										</div>
+										<div class="menu-item px-5">
+											<a href="{{ route('category') }}" class="menu-link px-5">Kategori</a>
+										</div>
+									@endif
 									<div class="menu-item px-5">
 										<a href="{{ route('logout') }}" class="menu-link px-5">Keluar</a>
 									</div>
@@ -112,7 +117,8 @@
 					<div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-semibold me-1">2023©</span>
-							<a href="https://github.com/ndaastudio" target="_blank" class="text-gray-800 text-hover-primary">About Me</a>
+							<a href="{{ route('about') }}" class="text-gray-800 text-hover-primary">About
+								Aprimivi Manda</a>
 						</div>
 					</div>
 				</div>
