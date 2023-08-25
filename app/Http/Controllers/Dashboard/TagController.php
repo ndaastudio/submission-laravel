@@ -42,7 +42,7 @@ class TagController extends Controller
         return redirect()->back()->with('error', 'Tag gagal ditambahkan');
     }
 
-    public function delete(string $id)
+    public function destroy(string $id)
     {
         $isDeleted = Tag::find($id)->delete();
         if ($isDeleted) {
