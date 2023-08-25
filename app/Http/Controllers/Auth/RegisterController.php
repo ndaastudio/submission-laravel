@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -54,6 +55,15 @@ class RegisterController extends Controller
                 ]
             ]
         );
+        $isGenerateUid = false;
+        while (!$isGenerateUid) {
+            $uid = Str::random(10);
+            $isExist = User::where('uid', $uid)->first();
+            if (!$isExist) {
+                $validatedData['uid'] = $uid;
+                $isGenerateUid = true;
+            }
+        }
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         $isRegistered = User::create($validatedData);
